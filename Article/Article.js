@@ -3,7 +3,7 @@
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
-    date: 'Nov 5th, 2018',
+    date: "Nov 5th, 2018",
     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
         moff wicket tatooine luke.Solo wampa wampa calrissian yoda moff.Darth grievous darth gonk darth hutt.Darth baba skywalker
         watto fett jango maul han.Mon ewok sidious sidious lando kenobi grievous gamorrean solo.Yoda wedge utapau darth calamari.
@@ -23,8 +23,8 @@ const data = [
         moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
   },
   {
-    title: 'Javascript and You, ES6',
-    date: 'May 7th, 2019',
+    title: "Javascript and You, ES6",
+    date: "May 7th, 2019",
     firstParagraph: `Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost
         Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot
         snargaluff seeker: Hagrid broomstick mischief managed. Snitch Fluffy rock-cake, 9 ¾ dress robes I must not tell lies. Mudbloods
@@ -43,8 +43,8 @@ const data = [
         sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   },
   {
-    title: 'React vs Angular vs Vue',
-    date: 'June 7th, 2019',
+    title: "React vs Angular vs Vue",
+    date: "June 7th, 2019",
     firstParagraph: `Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing
         elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Charmeleon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charizard Lorem ipsum dolor sit amet,
@@ -71,8 +71,8 @@ const data = [
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
-    title: 'Professional Software Development in 2019',
-    date: 'Jan 1st, 2019',
+    title: "Professional Software Development in 2019",
+    date: "Jan 1st, 2019",
     firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
           hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
           Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
@@ -112,3 +112,71 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+/*============== VARIABLES ==============*/
+let articlesDiv = document.querySelector(".articles");
+
+const personalArticle = {
+  title: "The Transformers (Marvel Comics)",
+  date: "May 8th, 1984",
+  firstParagraph:
+    "The Transformers, the monthly comic book published in the U.S. by Marvel Comics, was the very first original fiction to feature the famous robots in disguise, as well as the longest-running. It started life as a four-issue, bimonthly limited series in 1984, but proved so popular that it continued publication as an ongoing monthly until spring of 1991. The series ultimately reached 80 issues and spun off several miniseries.",
+
+  secondParagraph:
+    "The series established the Marvel Comics continuity, which would form the basis for several successor stories over the years, including the Generation 2 series published by Marvel themselves only two years later, and the Regeneration One series which would reunite the creative team from the latter days of this series.",
+
+  thirdParagraph:
+    "Nearly all of the U.S. stories were later published by Marvel UK, along with new stories that fit between the gaps of the U.S. tales."
+};
+
+/*============== ARTICLE COMPONENT CREATOR ==============*/
+
+function articleCreator(object) {
+  // Variables
+  let article = document.createElement("div");
+
+  const divContents = [document.createElement("h2")];
+
+  for (let i = 0; i < 4; i++) {
+    let p = document.createElement("p");
+    divContents.push(p);
+  }
+
+  divContents.push(document.createElement("span"));
+
+  // Attributes and Content
+  article.classList.add("article");
+  divContents[0].textContent = object.title;
+  divContents[1].setAttribute("class", "date");
+  divContents[1].textContent = object.date;
+  divContents[2].textContent = object.firstParagraph;
+  divContents[3].textContent = object.secondParagraph;
+  divContents[4].textContent = object.thirdParagraph;
+  divContents[5].setAttribute("class", "expandButton");
+  divContents[5].textContent = "\u25bc";
+
+  // Event Listeners
+  divContents[5].addEventListener("click", (event) => {
+    article.classList.toggle("article-open");
+
+    if (article.classList.contains("article-open")) {
+      divContents[5].textContent = "\u25b2";
+    } else {
+      divContents[5].textContent = "\u25bc";
+    }
+  });
+
+  // Component Structure
+  divContents.forEach((arg) => {
+    article.appendChild(arg);
+  });
+
+  return article;
+}
+
+/*============== DOM MANIPULATION ==============*/
+data.forEach((arg) => {
+  articlesDiv.appendChild(articleCreator(arg));
+});
+
+articlesDiv.appendChild(articleCreator(personalArticle));
