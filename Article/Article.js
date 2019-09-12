@@ -85,6 +85,42 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "The Transformers (Marvel Comics)",
+    date: "May 8th, 1984",
+    firstParagraph:
+      "The Transformers, the monthly comic book published in the U.S. by Marvel Comics, was the very first original fiction to feature the famous robots in disguise, as well as the longest-running. It started life as a four-issue, bimonthly limited series in 1984, but proved so popular that it continued publication as an ongoing monthly until spring of 1991. The series ultimately reached 80 issues and spun off several miniseries.",
+
+    secondParagraph:
+      "The series established the Marvel Comics continuity, which would form the basis for several successor stories over the years, including the Generation 2 series published by Marvel themselves only two years later, and the Regeneration One series which would reunite the creative team from the latter days of this series.",
+
+    thirdParagraph:
+      "Nearly all of the U.S. stories were later published by Marvel UK, along with new stories that fit between the gaps of the U.S. tales."
+  },
+  {
+    title: "The Transformers (TV Series)",
+    date: "September 17, 1984",
+    firstParagraph:
+      "The Transformers is a half-hour American animated robot superhero television series which originally aired from September 17, 1984 to November 11, 1987. The first of many series in the Transformers franchise, it was based upon Hasbro's Transformers toy line (itself based upon the Diaclone and Microman toy lines originally created by Japanese toy manufacturer Takara) and depicts a war among giant robots that can transform into vehicles and other objects.",
+
+    secondParagraph:
+      "Co-produced between Marvel Productions and Sunbow Productions for first-run syndication, animation for the series was done by Toei Animation in Japan, and later by AKOM in South Korea. The series was supplemented by a feature film, The Transformers: The Movie (1986), taking place between the second and third seasons.",
+
+    thirdParagraph:
+      'This series is also popularly known as "Generation 1", a term originally coined by fans in response to the re-branding of the franchise as Transformers: Generation 2 in 1992, which eventually made its way into official use.'
+  },
+  {
+    title: "Transformers (2019 Comic)",
+    date: "March 13, 2019",
+    firstParagraph:
+      "Transformers is an ongoing comic series from IDW Publishing that debuted in March 2019, releasing issues every two weeks for its first six months of publication before switching to a monthly release schedule in September 2019. The series marks the first installment of a brand-new continuity for IDW's Transformers comics, replacing the previous ongoing continuity that ran from 2005 to 2018. ",
+
+    secondParagraph:
+      "Set prior to the war between Autobots and Decepticons, Transformers takes place on a thriving, peaceful Cybertron that serves as an interstellar commerce hub. The era of peace is brought to an unexpected end, however, when the planet experiences its first murder in living memory.",
+
+    thirdParagraph:
+      "The series is written by Brian Ruckley. Each issue is regularly drawn by more than one artist; duties were initially split between Angel Hernandez and Cachét Whitman, with Hernandez illustrating the majority of the pages in each issue, while the second arc of the series saw Anna Malkova and Bethany McGuire-Smith join Hernandez as the book's primary recurring artists."
   }
 ];
 
@@ -115,19 +151,6 @@ const data = [
 
 /*============== VARIABLES ==============*/
 let articlesDiv = document.querySelector(".articles");
-
-const personalArticle = {
-  title: "The Transformers (Marvel Comics)",
-  date: "May 8th, 1984",
-  firstParagraph:
-    "The Transformers, the monthly comic book published in the U.S. by Marvel Comics, was the very first original fiction to feature the famous robots in disguise, as well as the longest-running. It started life as a four-issue, bimonthly limited series in 1984, but proved so popular that it continued publication as an ongoing monthly until spring of 1991. The series ultimately reached 80 issues and spun off several miniseries.",
-
-  secondParagraph:
-    "The series established the Marvel Comics continuity, which would form the basis for several successor stories over the years, including the Generation 2 series published by Marvel themselves only two years later, and the Regeneration One series which would reunite the creative team from the latter days of this series.",
-
-  thirdParagraph:
-    "Nearly all of the U.S. stories were later published by Marvel UK, along with new stories that fit between the gaps of the U.S. tales."
-};
 
 /*============== ARTICLE COMPONENT CREATOR ==============*/
 
@@ -178,5 +201,3 @@ function articleCreator(object) {
 data.forEach((arg) => {
   articlesDiv.appendChild(articleCreator(arg));
 });
-
-articlesDiv.appendChild(articleCreator(personalArticle));
