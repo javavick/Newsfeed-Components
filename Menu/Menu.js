@@ -61,4 +61,5 @@ function menuCreator(items) {
   return menu;
 }
 
+/*============== DOM MANIPULATION ==============*/
 document.querySelector(".header").prepend(menuCreator(menuItems));

@@ -161,58 +161,72 @@ gsap.setAttribute(
 
 /*============== ARTICLE COMPONENT CREATOR ==============*/
 function articleCreator(object) {
-  // Variables
+  /*===== VARIABLES ====*/
+
+  // Article Div
   let article = document.createElement("div");
 
-  const divContents = [
+  // Content Array
+  const content = [
     document.createElement("h2"),
     document.createElement("span")
   ];
 
+  // Create p Elements and Add Them to the Content Array
   for (let i = 0; i < 4; i++) {
     let p = document.createElement("p");
-    divContents.push(p);
+    content.push(p);
   }
 
-  divContents.push(document.createElement("span"));
+  // Add a New Span Element to the Content Array
+  content.push(document.createElement("span"));
 
-  // Attributes, Properties, and Content
+  /*===== ATTRIBUTES, PROPERTIES, AND TEXT ====*/
   article.classList.add("article");
-  divContents[0].textContent = object.title;
 
-  divContents[1].setAttribute("class", "close");
-  divContents[1].style.border = "1px solid red";
-  divContents[1].style.padding = "0 5px";
-  divContents[1].style.cursor = "pointer";
-  divContents[1].textContent = "X";
+  // Title
+  content[0].textContent = object.title;
 
-  divContents[2].setAttribute("class", "date");
-  divContents[2].textContent = object.date;
+  // Close Button
+  content[1].setAttribute("class", "close");
+  content[1].style.border = "1px solid red";
+  content[1].style.padding = "0 5px";
+  content[1].style.cursor = "pointer";
+  content[1].textContent = "X";
 
-  divContents[3].textContent = object.firstParagraph;
-  divContents[4].textContent = object.secondParagraph;
-  divContents[5].textContent = object.thirdParagraph;
+  // Date
+  content[2].setAttribute("class", "date");
+  content[2].textContent = object.date;
 
-  divContents[6].setAttribute("class", "expandButton");
-  divContents[6].textContent = "\u25bc";
+  // Paragraphs
+  content[3].textContent = object.firstParagraph;
+  content[4].textContent = object.secondParagraph;
+  content[5].textContent = object.thirdParagraph;
 
-  // Event Listeners
-  divContents[1].addEventListener("click", (event) => {
+  // Expand Button
+  content[6].setAttribute("class", "expandButton");
+  content[6].textContent = "\u25bc";
+
+  /*===== EVENT LISTENERS =====*/
+
+  // Close Button
+  content[1].addEventListener("click", (event) => {
     TweenMax.to(article, 0.7, { opacity: 0, display: "none", delay: 0 });
   });
 
-  divContents[6].addEventListener("click", () => {
+  // Expand Button
+  content[6].addEventListener("click", () => {
     article.classList.toggle("article-open");
 
     if (article.classList.contains("article-open")) {
-      divContents[6].textContent = "\u25b2";
+      content[6].textContent = "\u25b2";
     } else {
-      divContents[6].textContent = "\u25bc";
+      content[6].textContent = "\u25bc";
     }
   });
 
-  // Component Structure
-  divContents.forEach((arg) => {
+  /*===== COMPONENT STRUCTURE =====*/
+  content.forEach((arg) => {
     article.appendChild(arg);
   });
 
