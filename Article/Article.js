@@ -153,7 +153,6 @@ const data = [
 let articlesDiv = document.querySelector(".articles");
 
 /*============== ARTICLE COMPONENT CREATOR ==============*/
-
 function articleCreator(object) {
   // Variables
   let article = document.createElement("div");
