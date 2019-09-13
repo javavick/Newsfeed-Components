@@ -151,13 +151,23 @@ const data = [
 
 /*============== VARIABLES ==============*/
 let articlesDiv = document.querySelector(".articles");
+let head = document.querySelector("head");
+
+let gsap = document.createElement("script");
+gsap.setAttribute(
+  "src",
+  "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+);
 
 /*============== ARTICLE COMPONENT CREATOR ==============*/
 function articleCreator(object) {
   // Variables
   let article = document.createElement("div");
 
-  const divContents = [document.createElement("h2")];
+  const divContents = [
+    document.createElement("h2"),
+    document.createElement("span")
+  ];
 
   for (let i = 0; i < 4; i++) {
     let p = document.createElement("p");
@@ -166,25 +176,38 @@ function articleCreator(object) {
 
   divContents.push(document.createElement("span"));
 
-  // Attributes and Content
+  // Attributes, Properties, and Content
   article.classList.add("article");
   divContents[0].textContent = object.title;
-  divContents[1].setAttribute("class", "date");
-  divContents[1].textContent = object.date;
-  divContents[2].textContent = object.firstParagraph;
-  divContents[3].textContent = object.secondParagraph;
-  divContents[4].textContent = object.thirdParagraph;
-  divContents[5].setAttribute("class", "expandButton");
-  divContents[5].textContent = "\u25bc";
+
+  divContents[1].setAttribute("class", "close");
+  divContents[1].style.border = "1px solid red";
+  divContents[1].style.padding = "0 5px";
+  divContents[1].style.cursor = "pointer";
+  divContents[1].textContent = "X";
+
+  divContents[2].setAttribute("class", "date");
+  divContents[2].textContent = object.date;
+
+  divContents[3].textContent = object.firstParagraph;
+  divContents[4].textContent = object.secondParagraph;
+  divContents[5].textContent = object.thirdParagraph;
+
+  divContents[6].setAttribute("class", "expandButton");
+  divContents[6].textContent = "\u25bc";
 
   // Event Listeners
-  divContents[5].addEventListener("click", (event) => {
+  divContents[1].addEventListener("click", (event) => {
+    TweenMax.to(article, 0.7, { opacity: 0, display: "none", delay: 0 });
+  });
+
+  divContents[6].addEventListener("click", () => {
     article.classList.toggle("article-open");
 
     if (article.classList.contains("article-open")) {
-      divContents[5].textContent = "\u25b2";
+      divContents[6].textContent = "\u25b2";
     } else {
-      divContents[5].textContent = "\u25bc";
+      divContents[6].textContent = "\u25bc";
     }
   });
 
@@ -197,6 +220,8 @@ function articleCreator(object) {
 }
 
 /*============== DOM MANIPULATION ==============*/
+head.appendChild(gsap);
+
 data.forEach((arg) => {
   articlesDiv.appendChild(articleCreator(arg));
 });

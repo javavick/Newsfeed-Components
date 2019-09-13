@@ -51,7 +51,7 @@ function menuCreator(items) {
   });
 
   // Event Listeners
-  menuButton.addEventListener("click", (event) => {
+  menuButton.addEventListener("click", () => {
     menu.classList.toggle("menu--open");
   });
 
